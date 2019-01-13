@@ -15,9 +15,9 @@ The dataset is compiled by the [The Marshall Project](https://github.com/themars
 | *department_name* | Identify city |
 | *homs_per_100k* | Homicide cases per 100,000 people |
 | *rape_per_100k* | Rape cases per 100,000 people |
-| *rob_per_100k* | Robberies cases 100,000 people |
+| *rob_per_100k* | Robberies cases per 100,000 people |
 | *agg_ass_per_100k* | Aggravated assault cases per 100,000 people |
-| *violent_per_100k* | Total violent crimes (rape, homicides, robbery, and aggravated assault) per 100K |
+| *violent_per_100k* | Total violent crimes (rape, homicides, robbery, and aggravated assault) per 100,000 people |
 
 
 ### Usage Scenario and Tasks
