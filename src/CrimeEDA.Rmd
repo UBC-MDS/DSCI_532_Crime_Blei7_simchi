@@ -1,0 +1,38 @@
+---
+title: "Exploratory Data Analysis of Crime Data"
+author: "Bailey Lei, Simon Chiu"
+output: github_document
+---
+
+
+
+```{r}
+#load library
+suppressPackageStartupMessages(library(tidyverse))
+```
+
+```{r}
+# load data
+crime_data <- read_csv("../data/ucr_crime_1975_2015.csv")
+
+#preview data
+head(crime_data)
+```
+
+```{r}
+library(gapminder)
+                
+summary((crime_data %>% 
+  select(department_name,
+         violent_per_100k,
+         rape_per_100k,
+         homs_per_100k,
+         rob_per_100k,
+         agg_ass_per_100k,
+         months_reported,
+         year)))
+```
+
+
+
+Base on the intital EDA, we noticed that the variable for deparment names contains cities as well as county and also for some year, not all 12 months are reported. Since not having all 12 months reported will be problematic in term of the estimates for crime rate, we might decide to remove all cases where there is less than 12 months reported. Also, we will be filtering out all the county since we are interested in cities and national crime rate only. We also decided to keep the NA in for now since it won't affect our plots, but we might remove it in the future if needed. Lastly, we will need to rearrange our data into a tidy format for ease of plotting. 
