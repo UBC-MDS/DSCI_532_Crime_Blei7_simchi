@@ -8,15 +8,19 @@ Contributors: Bailey Lei, Simon Chiu
 To navigate through the “Visualizing crimes in US” app, users would start with entering their inputs on the left panel:
 
 1.	Enter the name of the city: Using the textwidge, users could either select the city from the dropdown list or just type in the name of the city
+
 ![City](https://github.com/cheukman1207/DSCI_532_Crime_Blei7_simchi/blob/master/pic/Screen_Shot_01.png)
 
 2.	Select the type of crime: check the ones that they are interested or just select all
+
 ![CrimeType](https://github.com/cheukman1207/DSCI_532_Crime_Blei7_simchi/blob/master/pic/Screen_Shot_02.png)
 
 3.	Select the time range: dragging the bar to select the desired year range
-![Year](Https://github.com/cheukman1207/DSCI_532_Crime_Blei7_simchi/blob/master/pic/Screen_Shot_03.png)
+
+![Year](https://github.com/cheukman1207/DSCI_532_Crime_Blei7_simchi/blob/master/pic/Screen_Shot_03.png)
 
 4.	Sample results of crime comparison between Boston, Seattle and San Jose
+
 ![Results](https://github.com/cheukman1207/DSCI_532_Crime_Blei7_simchi/blob/master/pic/Screen_Shot_04.png)
 
 ## Design
