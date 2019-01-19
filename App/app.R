@@ -62,7 +62,7 @@ server <- function(input, output) {
      
   } )
   
- 
+  #Time series plot of crime rates 
   output$TimeSeries <- renderPlot({
     filtered() %>% 
         ggplot(aes(year, crime_rate)) +
@@ -71,6 +71,7 @@ server <- function(input, output) {
         ggtitle(paste("Time Series of", input$crime, "Cases in U.S."))
   })
   
+  #Boxplot of crime rates  
   output$boxplot <- renderPlot({
     filtered() %>% 
       ggplot(aes(city, crime_rate)) +
