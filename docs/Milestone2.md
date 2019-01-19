@@ -8,16 +8,16 @@ Contributors: Bailey Lei, Simon Chiu
 To navigate through the “Visualizing crimes in US” app, users would start with entering their inputs on the left panel:
 
 1.	Enter the name of the city: Using the textwidge, users could either select the city from the dropdown list or just type in the name of the city
-![City](https://github.com/UBC-MDS/DSCI_532_Crime_Blei7_simchi/blob/master/pic/Screen Shot 01.png)
+![City](https://github.com/cheukman1207/DSCI_532_Crime_Blei7_simchi/blob/master/pic/Screen_Shot_01.png)
 
 2.	Select the type of crime: check the ones that they are interested or just select all
-![CrimeType](https://github.com/UBC-MDS/DSCI_532_Crime_Blei7_simchi/blob/master/pic/Screen Shot 02.png)
+![CrimeType](https://github.com/cheukman1207/DSCI_532_Crime_Blei7_simchi/blob/master/pic/Screen_Shot_02.png)
 
 3.	Select the time range: dragging the bar to select the desired year range
-![Year](Https://github.com/UBC-MDS/DSCI_532_Crime_Blei7_simchi/blob/master/pic/Screen Shot 03.png)
+![Year](Https://github.com/cheukman1207/DSCI_532_Crime_Blei7_simchi/blob/master/pic/Screen_Shot_03.png)
 
 4.	Sample results of crime comparison between Boston, Seattle and San Jose
-![Results](https://github.com/UBC-MDS/DSCI_532_Crime_Blei7_simchi/blob/master/pic/Screen Shot 04.png)
+![Results](https://github.com/cheukman1207/DSCI_532_Crime_Blei7_simchi/blob/master/pic/Screen_Shot_04.png)
 
 ## Design
 
@@ -31,7 +31,7 @@ In our first draft of the app, we had the two charts displayed side by side. How
 Before:
 ![Sketch](https://github.com/cheukman1207/DSCI_532_Crime_Blei7_simchi/blob/master/pic/Sketch.png)
 After:
-![Results](https://github.com/UBC-MDS/DSCI_532_Crime_Blei7_simchi/blob/master/pic/Screen Shot 04.png)
+![Results](https://github.com/cheukman1207/DSCI_532_Crime_Blei7_simchi/blob/master/pic/Screen_Shot_004.png)
 
 The other major change we implemented was to switch from a bar chart to a boxplot for showing the average level of crime. After discussion on the choice of chart, we decided to use a boxplot to display the medians and the quartiles instead of using a bar chart to display just the means. This new chart allows users to not only understand the average level of crime but also the volatility of such a level within the selected year(s).
 
@@ -45,5 +45,5 @@ In our app we decided to not display the state in the city selection. However, t
 
 ### Maximum Number of Cities
 The other feature we are considering implementing is adding a upper limit to the number of cities in our selection. This is due to a low efficiency in visualizing data with the line chart once the number of selected cities is high.
-![improvement](https://github.com/UBC-MDS/DSCI_532_Crime_Blei7_simchi/blob/master/pic/Screen Shot 04.png)
+![improvement](https://github.com/cheukman1207/DSCI_532_Crime_Blei7_simchi/blob/master/pic/Screen_Shot_004.png)
 
