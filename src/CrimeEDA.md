@@ -53,8 +53,6 @@ head(crime_data)
     ## #   source <chr>, url <chr>
 
 ``` r
-library(gapminder)
-                
 summary((crime_data %>% 
   select(department_name,
          violent_per_100k,
