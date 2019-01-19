@@ -1,0 +1,12 @@
+name: VisualizingCrimeUS
+title: VisualizingCrimeUS
+username:
+account: baileylei
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 655784
+bundleId: 1824358
+url: https://baileylei.shinyapps.io/VisualizingCrimeUS/
+when: 1547925413.25197
+asMultiple: FALSE
+asStatic: FALSE

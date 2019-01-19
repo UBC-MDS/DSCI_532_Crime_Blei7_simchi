@@ -76,7 +76,7 @@ server <- function(input, output) {
       ggplot(aes(city, crime_rate)) +
       geom_boxplot(aes(colour=city, group=city), show.legend = FALSE,  size =1, outlier.colour = "red", outlier.shape = 1)  + 
       ylab("cases per 100,000 people") + theme(axis.text=element_text(size=16)) +
-      ggtitle(paste("Analysis of", input$crime, "cases from", input$year[1], "to", input$year[2] ))
+      ggtitle(paste("Analysis of", input$crime, "cases from", input$year[1], "to", input$year[2]))
   })
   
 }
