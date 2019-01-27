@@ -6,8 +6,9 @@ Contributors: Bailey Lei, Simon Chiu
 |-|-|
 | [Milestone 1](../master/Proposal.md) | Project Proposal |
 | [Milestone 2](../master/docs/Milestone2.md) | Shiny app - [Visualizing crimes in US](https://baileylei.shinyapps.io/VisualizingCrimeUS/) |
-
-
+| [Milestone 3](../master/docs/Milestone3.md) | Shiny app - [Visualizing crimes in US](https://baileylei.shinyapps.io/VisualizingCrimeUS/) |
+|  | Feedback 1 - [For Fan Wu and Alden Chen](https://github.com/UBC-MDS/DSCI532_violent_crime_app/issues/24) |
+|  | Feedback 2 - [For Jingyun Chen and Gibert Lei](https://github.com/UBC-MDS/DSCI_532_Mental_Health_Analyzer/issues/9) |
 
 | Releases | Version|
 |-|-|
