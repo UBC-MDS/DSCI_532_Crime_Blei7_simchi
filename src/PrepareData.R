@@ -25,25 +25,24 @@ main <- function() {
   suppressMessages(crime_data <- read_csv(input))
 
   #Keep city names only and filter out all county
-  crime_data<-crime_data %>% mutate(department_name = replace(department_name, department_name!= stri_extract(crime_data$department_name, regex='[^,]*'), stri_extract(crime_data$department_name, regex='[^,]*'))) %>%
-      filter(!str_detect(department_name, "County"))
-  
-  
+  crime_data<-crime_data %>% filter(!str_detect(department_name, "County"))
+
+  #remove all states and keep city name only
+  crime_data$department_name <- gsub("\\,.*","",crime_data$department_name)
+
   #filter relevant columns of interest and reshape to tidy format
-  crime_data_reshape <- crime_data %>% 
+  crime_data_reshape <- crime_data %>%
     select(city = department_name,
            'All Crimes' = violent_per_100k,
            Robbery = rob_per_100k,
            Assult = agg_ass_per_100k,
            Rape = rape_per_100k,
            Homicide = homs_per_100k,
-           year) %>% 
+           year) %>%
     gather(key = "category", value = "crime_rate", 2:6 )
-  
-  
-  
-  
-  
+
+
+
   # save cleaned data
   crime_data_reshape %>% write_csv(output)
           print("Cleaned data successfully saved.")
