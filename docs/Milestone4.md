@@ -6,9 +6,10 @@ Contributors: Bailey Lei, Simon Chiu
 
 ### What changes did you decide to implement given the time limit, and why do you think this is the best thing to focus on?
 As we were reviewing our app recently, we realized that there is a major bug in our app that needs to be fixed. It was a problem that our data was being modified as we were doing data wrangling in our coding. This resulted in a significant problem in the line chart that the lines were going up and down. At the beginning, we think it looks suspicious but now it is a confirmed problem. The fixed chart has smooth lines now and we believe that for crime numbers in the same city over years, this chart makes a lot more sense as we fixed it. 
+
 Before:
 ![Before](https://github.com/cheukman1207/DSCI_532_Crime_Blei7_simchi/blob/master/pic/Screen_Shot_07.png)
-Afer:
+After:
 ![After](https://github.com/cheukman1207/DSCI_532_Crime_Blei7_simchi/blob/master/pic/Screen_Shot_06.png)
 As we were fixing this, we also updated and improved some of the coding and documentations in the coding.
 
