@@ -10,10 +10,11 @@
 library(shiny)
 library(tidyverse)
 library(DT)
+library(plotly)
 
 
 #load data
-crime_df  <- read_csv("../data/cleaned_crime.csv") %>% 
+crime_df  <- read_csv("cleaned_crime.csv") %>% 
     mutate(city = as.factor(city))
 
 ui <- fluidPage(
@@ -47,8 +48,8 @@ ui <- fluidPage(
           
           mainPanel(
             tabsetPanel(type = "tabs",
-              tabPanel("Plot", plotOutput("TimeSeries"),
-                                        plotOutput("boxplot")),
+              tabPanel("Plot", plotlyOutput("TimeSeries"),
+                                        plotlyOutput("boxplot")),
               tabPanel("Data", span("Data source:",
                                     tags$a(href = "https://github.com/themarshallproject/city-crime", "The Marshall Project")), dataTableOutput("table")),
               tabPanel("About", 
@@ -86,34 +87,25 @@ server <- function(input, output) {
   } )
   
   #Time series plot of crime rates 
-  output$TimeSeries <- renderPlot({
+  output$TimeSeries <- renderPlotly({
     filtered() %>% 
         ggplot(aes(year, crime_rate)) +
-        geom_line(aes(colour=city, group=city), 
-                  size =1.25) + 
-        theme(legend.position="top") + 
-        theme_grey(base_size = 18) +
-        theme(axis.text=element_text(size=18), 
-              plot.title = element_text(size = 20, face = "bold"))+
+        geom_line(aes(colour=city, group=city))+
+        xlab("") +
         ylab("cases per 100,000 people") + 
         ggtitle(paste("Time Series of", input$crime, "Cases in U.S. from", input$year[1], "to", input$year[2]))
   })
   
   #Boxplot of crime rates  
-  output$boxplot <- renderPlot({
+  output$boxplot <- renderPlotly({hide_legend(
     filtered() %>% 
       ggplot(aes(city, crime_rate)) +
-      geom_boxplot(aes(colour=city, group=city), 
-                   show.legend = FALSE,  
-                   size =1, 
-                   outlier.colour = "red", 
-                   outlier.shape = 1)  + 
+      geom_boxplot(aes(fill = city, alpha=0.8, group=city)) + 
+      xlab("") +
       ylab("cases per 100,000 people") +  
-      theme_grey(base_size = 18) +
-      theme(axis.text=element_text(size=18), 
-            plot.title = element_text(size = 20, face = "bold"),
-            axis.text.x = element_text(angle=45, hjust=1)) +
-      ggtitle(paste("Distribution of", input$crime, "cases from", input$year[1], "to", input$year[2]))
+      theme(axis.text.x = element_text(angle=45, hjust=1))+
+      ggtitle(paste("Distribution of", input$crime, "cases from", input$year[1], "to", input$year[2])))
+    
     
   })
   
