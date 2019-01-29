@@ -9,6 +9,8 @@
 
 library(shiny)
 library(tidyverse)
+library(DT)
+
 
 #load data
 crime_df  <- read_csv("../data/cleaned_crime.csv") %>% 
@@ -20,9 +22,10 @@ ui <- fluidPage(
         
         sidebarLayout(
           sidebarPanel(
+            style = "position:fixed;width:inherit;",
             # Input: select city
             selectInput("city",
-                        label = "Cities",
+                        label = "Cities: (where do you want to live?)",
                         choices = crime_df$city,
                         multiple = TRUE,
                         selected = c('Cleveland','Boston')),
@@ -43,8 +46,28 @@ ui <- fluidPage(
           
           
           mainPanel(
-            plotOutput("TimeSeries"),
-            plotOutput("boxplot")
+            tabsetPanel(type = "tabs",
+              tabPanel("Plot", plotOutput("TimeSeries"),
+                                        plotOutput("boxplot")),
+              tabPanel("Data", span("Data source:",
+                                    tags$a(href = "https://github.com/themarshallproject/city-crime", "The Marshall Project")), dataTableOutput("table")),
+              tabPanel("About", 
+                       h2("Description"),
+                       br(), 
+                       "This web app allows for visual comparision of crimes between cities as well as the trend in crime rate. 
+                       The user can filter by cities, crime type and the period from 1975-2015. The dataset is compiled by the", tags$a(href = "https://github.com/themarshallproject/city-crime", "The Marshall Project"), "in which the data is collected from 68 police jurisdictions across the United States between 1975 to 2015. The dataset consists of 2829 records, covering four types of violent crimes ,such as rape, homicides, robbery, and aggravated assault.",
+                       br(), 
+                       br(),
+                       br(),
+                       "Contributors: Bailey Lei, Simon Chiu",
+                       br(),
+                       span("Github Repository:",
+                            tags$a(href = "https://github.com/UBC-MDS/DSCI_532_Crime_Blei7_simchi", "Visualizing crimes in US")),
+                       br(),
+                       "Please contact Bailey Lei (baileylei@gmail.com) with questions, comments or concerns.")
+                      
+
+            )
           )
         )
 )
@@ -91,7 +114,15 @@ server <- function(input, output) {
             plot.title = element_text(size = 20, face = "bold"),
             axis.text.x = element_text(angle=45, hjust=1)) +
       ggtitle(paste("Distribution of", input$crime, "cases from", input$year[1], "to", input$year[2]))
+    
   })
+  
+  #Dataset 
+  output$table<-DT::renderDataTable(
+    {
+      DT::datatable(filtered(),options = list(lengthMenu = c(30,50,100),pageLength = 10))
+    }
+  )
   
 }
 shinyApp(ui = ui, server = server)

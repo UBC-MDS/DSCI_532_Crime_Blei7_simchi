@@ -35,7 +35,7 @@ main <- function() {
     select(city = department_name,
            'All Crimes' = violent_per_100k,
            Robbery = rob_per_100k,
-           Assult = agg_ass_per_100k,
+           Assault = agg_ass_per_100k,
            Rape = rape_per_100k,
            Homicide = homs_per_100k,
            year) %>%
