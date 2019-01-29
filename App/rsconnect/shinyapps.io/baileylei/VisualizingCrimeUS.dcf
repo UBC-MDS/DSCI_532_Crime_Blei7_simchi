@@ -5,9 +5,8 @@ account: baileylei
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 655784
-bundleId: 1839007
+bundleId: 1840359
 url: https://baileylei.shinyapps.io/VisualizingCrimeUS/
-when: 1548547960.56348
+when: 1548639263.97809
 asMultiple: FALSE
 asStatic: FALSE
-ignoredFiles: data/cleaned_crime.csv
