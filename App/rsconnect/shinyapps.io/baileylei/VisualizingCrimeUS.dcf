@@ -5,8 +5,8 @@ account: baileylei
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 655784
-bundleId: 1840359
+bundleId: 1843333
 url: https://baileylei.shinyapps.io/VisualizingCrimeUS/
-when: 1548639263.97809
+when: 1548760440.52144
 asMultiple: FALSE
 asStatic: FALSE
