@@ -14,7 +14,7 @@ library(plotly)
 
 
 #load data
-crime_df  <- read_csv("cleaned_crime.csv") %>% 
+crime_df  <- read_csv("../data/cleaned_crime.csv") %>% 
     mutate(city = as.factor(city))
 
 ui <- fluidPage(
@@ -90,7 +90,7 @@ server <- function(input, output) {
   output$TimeSeries <- renderPlotly({
     filtered() %>% 
         ggplot(aes(year, crime_rate)) +
-        geom_line(aes(colour=city, group=city))+
+        geom_line(aes(colour=city, group=category))+
         xlab("") +
         ylab("cases per 100,000 people") + 
         ggtitle(paste("Time Series of", input$crime, "Cases in U.S. from", input$year[1], "to", input$year[2]))
@@ -100,7 +100,7 @@ server <- function(input, output) {
   output$boxplot <- renderPlotly({hide_legend(
     filtered() %>% 
       ggplot(aes(city, crime_rate)) +
-      geom_boxplot(aes(fill = city, alpha=0.8, group=city)) + 
+      geom_boxplot(aes(fill = city, alpha=0.7)) + 
       xlab("") +
       ylab("cases per 100,000 people") +  
       theme(axis.text.x = element_text(angle=45, hjust=1))+
