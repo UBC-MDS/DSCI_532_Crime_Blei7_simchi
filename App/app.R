@@ -11,6 +11,9 @@ library(shiny)
 library(tidyverse)
 library(DT)
 library(plotly)
+library(leaflet)
+library(ggmap)
+
 
 
 #load data
@@ -20,16 +23,17 @@ crime_df  <- read_csv("../data/cleaned_crime.csv") %>%
 ui <- fluidPage(
         titlePanel("Visualizing Crimes in US"),
         
-        
+        #Side panel frame
         sidebarLayout(
           sidebarPanel(
-            style = "position:fixed;width:inherit;",
+            style = "position:fixed;width:fixed;", ##fix sidebar pos, but overlap in narrow size broswer
+            
             # Input: select city
             selectInput("city",
                         label = "Cities: (where do you want to live?)",
                         choices = crime_df$city,
                         multiple = TRUE,
-                        selected = c('Cleveland','Boston')),
+                        selected = c('Kansas City','Boston','Atlanta', 'Seattle', 'Long Beach')),
             #Input: select crime type
             radioButtons("crime", 
                          label = "Crimes",
@@ -45,11 +49,12 @@ ui <- fluidPage(
           ),
           
           
-          
+          #Main panel frame with 3 tabs
           mainPanel(
             tabsetPanel(type = "tabs",
               tabPanel("Plot", plotlyOutput("TimeSeries"),
-                                        plotlyOutput("boxplot")),
+                                        plotlyOutput("boxplot"),
+                       leafletOutput("map")),
               tabPanel("Data", span("Data source:",
                                     tags$a(href = "https://github.com/themarshallproject/city-crime", "The Marshall Project")), dataTableOutput("table")),
               tabPanel("About", 
@@ -81,8 +86,8 @@ server <- function(input, output) {
       filter(year >= input$year[1],
              year <= input$year[2],
              city %in% input$city,
-             category == input$crime
-      )
+             category == input$crime)
+      
      
   } )
   
@@ -108,6 +113,11 @@ server <- function(input, output) {
     
     
   })
+  #generate US map with market base on input cities
+  output$map <- renderLeaflet({
+    leaflet() %>% setView(lng = -95.7129, lat = 37.0902, zoom = 3) %>% addTiles() %>% addMarkers(data  = geocode(input$city, source = "dsk"), label =input$city, )
+  })
+  
   
   #Dataset 
   output$table<-DT::renderDataTable(
