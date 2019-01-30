@@ -16,8 +16,6 @@ As we were fixing this, we also updated and improved some of our code and docume
 This bug took over as our number one task despite the fact that we only had limited time because it was a critical issue that affected the accuracy of the information that we were reporting to our users. We believe that we will be more careful with data as we gain more experience from projects like this. 
 Other upgrades that we have implemented include adding a data tab for raw data, labels to help users correctly interpreting the information displayed on a box plot, a map view of the cities of their interests and adding an "About" tab with information about the app. 
 
-allowing users to select/deselect group(s) of cities (e.g. all the cities in a certain state),
-
 ### If you were to make the app again from scratch (or some other app in general), what would you do differently?
 If we were to make the app all over again, we would like to implement a “Map” tab in addition to what we have currently to visualize the data on the map (similar to one of the examples on the Shiny Galley: https://shiny.rstudio.com/gallery/superzip-example.html). Since all of the cities in our data are located in the United States, we can plot the crime data of all cities on the map of the United States instead of selecting them one by one in the word widget. For now we have a map to show the location of the cities on the map but in the "Map" tab case, users only need to select the year range and type of crime in order to get an overall view of the distribution of criminal activities.
 
